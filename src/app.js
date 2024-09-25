@@ -21,9 +21,44 @@ app.use(
   })
 );
 
-app.use(express.static("public"))       //as we created public folder for public assets to store files 
+app.use(express.static("public")); //as we created public folder for public assets to store files
 
-app.use(cookieParser())
+app.use(cookieParser());
+
+//routes  
+import userRouter from "./routes/user.routes";
+import { registerUser } from "./controllers/user.controller";
+
+
+
+//router declaration
+
+app.use("./api/v1/users",userRouter)
+
+//http://localhost:8000/api/v1/users/register
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // app.get("/",(req,res)=>{
