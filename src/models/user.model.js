@@ -46,7 +46,7 @@ const userSchema = new Schema(
     ],
   },
   { timestamps: true }
-);
+);df
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next(); // If the password hasn't been modified, skip this middleware.. isModidied

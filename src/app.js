@@ -1,12 +1,13 @@
 import express from "express";
 import cors from "cors";
-import cookieParser from "cookieParser";
+//import cookieParser from "cookieParser";
 
 const app = express();
+console.log("APPPPP");
 
 app.use(
   cors({
-    // origin:process.env.CORS_Originff
+     origin:process.env.CORS_Origin,
     credentials: true,
   })
 );
@@ -23,20 +24,23 @@ app.use(
 
 app.use(express.static("public")); //as we created public folder for public assets to store files
 
-app.use(cookieParser());
+//app.use(cookieParser());
 
 //routes  
-import userRouter from "./routes/user.routes";
-import { registerUser } from "./controllers/user.controller";
+import userRouter from "./routes/user.routes.js";
+import { registerUser } from "./controllers/user.controller.js";
 
 
 
 //router declaration
-
-app.use("./api/v1/users",userRouter)
-
+console.log("hello")
+app.use("/api/v1/users",userRouter)
+app.get("/api/v1/users",(req,res)=>{
+  res.send("asd")
+})
 //http://localhost:8000/api/v1/users/register
 
+export  {app};
 
 
 
@@ -70,4 +74,4 @@ app.use("./api/v1/users",userRouter)
 
 // })
 
-export default app;
+

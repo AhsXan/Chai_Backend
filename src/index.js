@@ -1,12 +1,14 @@
 import connectDB from "./db/db.js";
 import dotenv from "dotenv";
-//import ap from "app.js"
+import {app} from "./app.js"
 
-import express from "express";
+//import express from "express";
 
 
-const app=express()
-
+//const app=express()
+dotenv.config({
+    path:"./.env"
+})
 
 app.get("/",(req,res)=>{
 res.send("Hello")
@@ -16,9 +18,9 @@ app.listen(4000,()=>{
 console.log("this app is running on port : 4000");
 
 })
-dotenv.config({
-    path:"./env"
-})
+
+
+
 
 
 connectDB()

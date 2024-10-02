@@ -1,26 +1,27 @@
 ///backend8
 //Title: Asynchronous Error Handling Middleware for Express.js
 
-// const asyncHandler = (reqHandler) => {
-//   (req, res, next) => {
-//     Promise.resolve(reqHandler()).catch((err) => next(err));
-//   };
-// };
+const asyncHandler = (requestHandler) => {
+  return (req, res, next) => {
+    Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
+  };
+};
 
+export default asyncHandler;
 // export {asyncHandler}
 
 // using try catch
-export const asyncHandler = (fn = async (req, res, next) => {
-  try {
-    await fn(req, res, next);
-  } catch (error) {
-    // res.send("Error aya Async Handler me : "+error)
-    res.status(err.code || 500).json({
-      sucess: false,
-      message: err.message,
-    });
-  }
-});
+// export const asyncHandler = (fn = async (req, res, next) => {
+//   try {
+//     await fn(req, res, next);
+//   } catch (error) {
+//     // res.send("Error aya Async Handler me : "+error)
+//     res.status(err.code || 500).json({
+//       sucess: false,
+//       message: err.message,
+//     });
+//   }
+// });
 
 /*
 
