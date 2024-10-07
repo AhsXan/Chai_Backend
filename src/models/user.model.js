@@ -46,12 +46,12 @@ const userSchema = new Schema(
     ],
   },
   { timestamps: true }
-);df
+);
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next(); // If the password hasn't been modified, skip this middleware.. isModidied
 
-  this.password = bcrypt.hash(this.password, 10); // Hash the password using bcrypt with a salt round of 10
+  this.password = await  bcrypt.hash(this.password, 10); // Hash the password using bcrypt with a salt round of 10
 
   // Continue to the next middleware or save operation
   next();
